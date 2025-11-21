@@ -1,12 +1,16 @@
 import React from 'react';
+import heroImage from '../assets/images/home-hero.png';
 
-const Home = () => {
+function Home() {
     return (
-        <div className="container section">
-            <h1 className="section-title">Welcome</h1>
-            <p>This is my personal website. Explore my works, library, and gallery.</p>
+        <div className="page-container">
+            <div className="hero-section">
+                <img src={heroImage} alt="Home Hero" className="hero-image" />
+                <h1 className="page-title">HOME</h1>
+            </div>
+            <p>Welcome to my personal website.</p>
         </div>
     );
-};
+}
 
 export default Home;

@@ -1,13 +1,16 @@
 import React from 'react';
+import heroImage from '../assets/images/blog-hero.png';
 
-const Blog = () => {
+function Blog() {
     return (
-        <div className="container section">
-            <h1 className="section-title">Blog</h1>
-            <p>My thoughts and articles.</p>
-            {/* Blog posts list will go here */}
+        <div className="page-container">
+            <div className="hero-section">
+                <img src={heroImage} alt="Blog Hero" className="hero-image" />
+                <h1 className="page-title">BLOG</h1>
+            </div>
+            <p>My blog posts.</p>
         </div>
     );
-};
+}
 
 export default Blog;
