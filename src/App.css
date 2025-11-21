@@ -3,7 +3,8 @@
 .hero-section {
   position: relative;
   width: 100%;
-  height: calc(100vh - var(--header-height));
+  height: 100vh;
+  margin-top: calc(var(--header-height) * -1);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -32,7 +33,7 @@
   margin: 0;
 }
 
-.page-container > p {
+.page-container>p {
   max-width: var(--container-width);
   margin: var(--spacing-xl) auto;
   padding: 0 var(--spacing-md);
