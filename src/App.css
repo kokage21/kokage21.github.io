@@ -33,7 +33,8 @@
   margin: 0;
 }
 
-.page-container>p {
+.page-container>p,
+.profile-content {
   max-width: var(--container-width);
   margin: var(--spacing-xl) auto;
   padding: 0 var(--spacing-md);
