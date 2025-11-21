@@ -10,22 +10,46 @@
 
 <body>
   <div id="debug-error"
-    style="display:none; color:red; padding:20px; background:white; position:fixed; top:0; left:0; width:100%; z-index:9999;">
+    style="display:none; color:red; padding:20px; background:white; position:fixed; top:0; left:0; width:100%; z-index:9999; border: 2px solid red;">
+  </div>
+  <div id="loading-text"
+    style="position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); font-size:24px; font-family:sans-serif;">
+    Loading Site...<br>
+    <small style="font-size:14px; color:gray;">If this message stays, React failed to start.</small>
   </div>
   <script>
+    // Global error handler for script errors
     window.onerror = function (msg, url, line, col, error) {
       var div = document.getElementById('debug-error');
       div.style.display = 'block';
-      div.innerHTML += 'Error: ' + msg + '<br>URL: ' + url + '<br>Line: ' + line + '<br><br>';
+      div.innerHTML += '<strong>JS Error:</strong> ' + msg + '<br>URL: ' + url + '<br>Line: ' + line + '<br><br>';
     };
+
+    // Global handler for promise rejections
     window.onunhandledrejection = function (event) {
       var div = document.getElementById('debug-error');
       div.style.display = 'block';
-      div.innerHTML += 'Unhandled Rejection: ' + event.reason + '<br><br>';
+      div.innerHTML += '<strong>Unhandled Rejection:</strong> ' + event.reason + '<br><br>';
     };
+
+    // Global handler for resource loading errors (img, script, css) - must use capture
+    window.addEventListener('error', function (event) {
+      if (event.target && (event.target.tagName === 'IMG' || event.target.tagName === 'SCRIPT' || event.target.tagName === 'LINK')) {
+        var div = document.getElementById('debug-error');
+        div.style.display = 'block';
+        var src = event.target.src || event.target.href;
+        div.innerHTML += '<strong>Resource Error:</strong> Failed to load ' + event.target.tagName + ': ' + src + '<br><br>';
+      }
+    }, true);
   </script>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <script>
+    // Hide loading text when React mounts (this is a crude check, ideally React does this)
+    // But since we can't easily modify React mount logic without touching main.jsx, we'll rely on React clearing the root or covering it.
+    // Actually, React renders INTO #root. #loading-text is outside.
+    // Let's modify main.jsx to remove loading text.
+  </script>
 </body>
 
 </html>
