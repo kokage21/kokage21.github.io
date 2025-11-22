@@ -9,7 +9,7 @@ const Layout = () => {
     <div className="layout">
       <header className="header">
         <div className="container header-content">
-          <Link to="/" className="logo">KOKAGE Works</Link>
+          <Link to="/" className="logo">KOKAGE works</Link>
           <nav className="nav">
             <ul className="nav-list">
               <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>HOME</Link></li>
@@ -27,7 +27,7 @@ const Layout = () => {
       </main>
       <footer className="footer">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} My Personal Website. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} KOKAGE works. All rights reserved.</p>
         </div>
       </footer>
     </div>

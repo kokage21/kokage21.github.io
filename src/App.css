@@ -102,3 +102,58 @@
   color: #ef4444;
   margin-top: var(--spacing-md);
 }
+
+/* ================ ブログ記事用CSS ================= */
+/* 記事全体を囲む枠 */
+.blog-list-container {
+  max-width: 800px;
+  margin: 0 auto;
+  /* 中央寄せ */
+  padding: 2rem 1rem;
+}
+
+/* ひとつの記事カード */
+.blog-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  /* 記事ごとの間隔 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  /* ほんのり影をつける */
+}
+
+/* タイトル */
+.blog-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid #4a7c59;
+  /* KOKAGEっぽい緑のアクセント */
+  padding-left: 10px;
+}
+
+/* 日付とカテゴリ */
+.blog-meta {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.blog-category {
+  background-color: #eee;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 10px;
+  font-size: 0.8rem;
+}
+
+/* 本文 */
+.blog-content {
+  line-height: 1.8;
+  /* 読みやすく行間を空ける */
+  color: #444;
+  white-space: pre-wrap;
+  /* 改行をそのまま表示する設定 */
+}
