@@ -24,18 +24,12 @@ function ContactForm() {
         setStatus('sending');
 
         try {
-            const response = await fetch('https://formspree.io/f/xbllegrl', { // Using a placeholder ID first, wait, user gave email.
-                // Formspree usually requires a form ID (like xbllegrl) OR you can post to the email if you register it.
-                // Actually, posting to https://formspree.io/f/EMAIL is the old way and often requires the email to be the ID or registered.
-                // The user provided 'e015551@yahoo.co.jp'.
-                // Standard Formspree usage is creating a form in their dashboard and getting an ID.
-                // HOWEVER, for simple usage, sometimes you can use the email directly if it's a new form, but Formspree changed this.
-                // Let's try using the email as the endpoint: https://formspree.io/f/e015551@yahoo.co.jp
-                // If that fails, I'll have to ask the user to register.
-                // But usually, the first time you POST to a new email address on Formspree, it triggers the registration email.
+            // Using the legacy endpoint format for direct email submission
+            const response = await fetch('https://formspree.io/e015551@yahoo.co.jp', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify(formData)
             });
@@ -54,9 +48,8 @@ function ContactForm() {
         }
     };
 
-    // Note: The URL below uses the email directly. This triggers Formspree to send a confirmation email to that address.
-    // Once confirmed, the form will work.
-    const formEndpoint = "https://formspree.io/f/e015551@yahoo.co.jp";
+    // Note: The URL uses the email directly. This triggers Formspree to send a confirmation email to that address.
+    const formEndpoint = "https://formspree.io/e015551@yahoo.co.jp";
 
     return (
         <form onSubmit={handleSubmit} className="contact-form">
