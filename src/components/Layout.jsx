@@ -9,7 +9,7 @@ const Layout = () => {
     <div className="layout">
       <header className="header">
         <div className="container header-content">
-          <Link to="/" className="logo">MySite</Link>
+          <Link to="/" className="logo">KOKAGE21</Link>
           <nav className="nav">
             <ul className="nav-list">
               <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>HOME</Link></li>
