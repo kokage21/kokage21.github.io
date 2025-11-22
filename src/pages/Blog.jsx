@@ -2,7 +2,6 @@ import React from 'react';
 import heroImage from '../assets/images/blog-hero.png';
 // 作成したデータを読み込みます
 import { blogPosts } from '../assets/articles/blogPosts.js';
-import '../styles/App.css'; // ※後述：スタイルを整えるCSS
 
 function Blog() {
     return (

@@ -104,12 +104,14 @@
 }
 
 
-/* ================ ブログ記事用CSS ================= */
+/* =========================================
+   BLOG PAGE STYLES
+   ========================================= */
+
 /* 記事全体を囲む枠 */
 .blog-list-container {
   max-width: 800px;
   margin: 0 auto;
-  /* 中央寄せ */
   padding: 2rem 1rem;
 }
 
@@ -120,18 +122,16 @@
   border-radius: 8px;
   padding: 2rem;
   margin-bottom: 2rem;
-  /* 記事ごとの間隔 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  /* ほんのり影をつける */
 }
 
-/* タイトル */
+/* 記事タイトル */
 .blog-title {
   font-size: 1.5rem;
   color: #333;
   margin-bottom: 0.5rem;
   border-left: 4px solid #4a7c59;
-  /* KOKAGEっぽい緑のアクセント */
+  /* KOKAGEカラー */
   padding-left: 10px;
 }
 
@@ -150,11 +150,10 @@
   font-size: 0.8rem;
 }
 
-/* 本文 */
+/* 記事本文 */
 .blog-content {
   line-height: 1.8;
-  /* 読みやすく行間を空ける */
   color: #444;
   white-space: pre-wrap;
-  /* 改行をそのまま表示する設定 */
+  /* 改行を反映 */
 }
