@@ -1,66 +1,25 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import React from 'react';
 
 function ContactForm() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
-    const [status, setStatus] = useState('');
-    const navigate = useNavigate();
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatus('sending');
-
-        try {
-            // Using the legacy endpoint format for direct email submission
-            const response = await fetch('https://formspree.io/e015551@yahoo.co.jp', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            if (response.ok) {
-                setStatus('success');
-                navigate('/thanks');
-            } else {
-                setStatus('error');
-                const data = await response.json();
-                console.error('Formspree error:', data);
-            }
-        } catch (error) {
-            setStatus('error');
-            console.error('Network error:', error);
-        }
-    };
-
-    // Note: The URL uses the email directly. This triggers Formspree to send a confirmation email to that address.
-    const formEndpoint = "https://formspree.io/e015551@yahoo.co.jp";
-
     return (
-        <form onSubmit={handleSubmit} className="contact-form">
+        <form
+            action="https://formspree.io/f/e015551@yahoo.co.jp"
+            method="POST"
+            className="contact-form"
+        >
+            {/* Redirect to Thanks page after submission */}
+            <input type="hidden" name="_next" value="https://kokage21.github.io/#/thanks" />
+
+            {/* Spam protection (honeypot) */}
+            <input type="text" name="_gotcha" style={{ display: 'none' }} />
+
             <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     placeholder="Your Name"
                 />
@@ -72,8 +31,6 @@ function ContactForm() {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     placeholder="your.email@example.com"
                 />
@@ -85,8 +42,6 @@ function ContactForm() {
                     type="text"
                     id="subject"
                     name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
                     required
                     placeholder="Subject"
                 />
@@ -97,21 +52,15 @@ function ContactForm() {
                 <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                     placeholder="Your message here..."
                     rows="5"
                 ></textarea>
             </div>
 
-            <button type="submit" className="submit-button" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Sending...' : 'Send Message'}
+            <button type="submit" className="submit-button">
+                Send Message
             </button>
-
-            {status === 'error' && (
-                <p className="error-message">Failed to send message. Please try again later.</p>
-            )}
         </form>
     );
 }
