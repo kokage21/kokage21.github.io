@@ -1,8 +1,8 @@
 import React from 'react';
 import heroImage from '../assets/images/blog-hero.png';
 // 作成したデータを読み込みます
-import { blogPosts } from '../assets/articles/blogPosts';
-import '../styles/Blog.css'; // ※後述：スタイルを整えるCSS
+import { blogPosts } from '../assets/articles/blogPosts.js';
+import '../styles/App.css'; // ※後述：スタイルを整えるCSS
 
 function Blog() {
     return (
@@ -11,6 +11,7 @@ function Blog() {
                 <img src={heroImage} alt="Blog Hero" className="hero-image" />
                 <h1 className="page-title">BLOG</h1>
             </div>
+
             {/* ここから記事リストの自動生成エリア */}
             <div className="blog-list-container">
                 {blogPosts.map((post) => (
