@@ -4,7 +4,7 @@ import React from 'react';
 function ContactForm() {
     return (
         <form
-            action="https://formspree.io/f/e015551@yahoo.co.jp"
+            action="https://formspree.io/f/mrbdednw"
             method="POST"
             className="contact-form"
         >
