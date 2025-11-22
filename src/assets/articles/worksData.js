@@ -6,7 +6,7 @@ export const worksData = [
         title: "ポートフォリオサイト作成",
         category: "Web Development",
         tools: ["React", "Vite", "GitHub Pages"],
-        // image: projectImg1, // または画像のパス文字列
+        image: null, //projectImg1, または画像のパス文字列
         description: "自身の活動を記録するためのWebサイト。Antigravityで生成。",
         link: "https://github.com/kokage21/..."
     },

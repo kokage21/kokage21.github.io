@@ -111,35 +111,25 @@
 /* 1. コンテンツ全体を中央に寄せる「箱」 */
 .grid-container {
   max-width: 1000px;
-  /* 横幅の最大値を決める */
   margin: 0 auto;
-  /* 左右の余白を自動にして中央寄せ */
   padding: 2rem 1rem;
-
-  /* タイル状に並べる設定 */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  /* カード同士の隙間 */
 }
 
 /* 2. ひとつひとつのカードのデザイン */
 .grid-card {
   background-color: #1a1a1a;
-  /* カードの背景色（少し明るい黒） */
   border: 1px solid #333;
-  /* 薄い枠線 */
   border-radius: 8px;
-  /* 角を丸く */
   overflow: hidden;
   transition: transform 0.2s ease;
 }
 
 .grid-card:hover {
   transform: translateY(-5px);
-  /* カーソルを乗せると浮く動き */
   border-color: #4a7c59;
-  /* 枠線を緑に */
 }
 
 /* カード内の画像 */
