@@ -1,6 +1,6 @@
 import React from 'react';
 import heroImage from '../assets/images/works-hero.png';
-import { worksData } from '../articles/worksData.js'; // データを読み込む
+import { worksData } from '../assets/articles/worksData.js'; // データを読み込む
 
 function Works() {
     return (
