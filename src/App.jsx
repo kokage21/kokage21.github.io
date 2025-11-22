@@ -7,6 +7,7 @@ import Library from './pages/Library';
 import Gallery from './pages/Gallery';
 import Blog from './pages/Blog';
 import Profile from './pages/Profile';
+import Thanks from './pages/Thanks';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="gallery" element={<Gallery />} />
           <Route path="blog" element={<Blog />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="thanks" element={<Thanks />} />
         </Route>
       </Routes>
     </HashRouter>

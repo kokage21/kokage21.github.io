@@ -1,5 +1,6 @@
 import React from 'react';
 import heroImage from '../assets/images/profile-hero.png';
+import ContactForm from '../components/ContactForm';
 
 function Profile() {
     return (
@@ -10,10 +11,9 @@ function Profile() {
             </div>
             <div className="profile-content">
                 <p>About me.</p>
-                <div style={{ marginTop: '2rem' }}>
-                    <a href="mailto:your.email@example.com" className="contact-link" style={{ color: 'var(--color-accent)', textDecoration: 'underline' }}>
-                        Contact Me via Email
-                    </a>
+                <div style={{ marginTop: '2rem', marginBottom: '3rem' }}>
+                    <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Contact</h2>
+                    <ContactForm />
                 </div>
             </div>
         </div>
