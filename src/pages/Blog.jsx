@@ -10,6 +10,7 @@ function Blog() {
                 <img src={heroImage} alt="Blog Hero" className="hero-image" />
                 <h1 className="page-title">BLOG</h1>
             </div>
+            <p>日々気になったことを、書いていきます</p>
 
             {/* ここから記事リストの自動生成エリア */}
             <div className="blog-list-container">
