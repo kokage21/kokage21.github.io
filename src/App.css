@@ -1,5 +1,39 @@
-/* App specific styles */
+/* =========================================
+   1. 基本設定・変数の定義 (これが消えていました！)
+   ========================================= */
+:root {
+  --header-height: 80px;
+  --container-width: 1000px;
 
+  /* 色の定義 */
+  --color-bg: #121212;
+  --color-surface: #1e1e1e;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #a0a0a0;
+  --color-accent: #4a7c59;
+  --color-accent-hover: #5da370;
+  --color-border: #333;
+
+  /* スペースの定義 */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  /* フォントサイズ */
+  --font-size-lg: 1.1rem;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* =========================================
+   2. 共通パーツ
+   ========================================= */
 .hero-section {
   position: relative;
   width: 100%;
@@ -19,31 +53,51 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  opacity: 0.6;
 }
 
 .page-title {
   position: relative;
   z-index: 1;
-  color: var(--color-text-primary);
+  color: #fff;
   font-size: 4rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   margin: 0;
 }
 
-.page-container>p,
-.profile-content {
-  max-width: var(--container-width);
-  margin: var(--spacing-xl) auto;
-  padding: 0 var(--spacing-md);
+/* 説明文（About meなど）のスタイル */
+/* src/styles/App.css */
+.page-container .page-description {
+  max-width: 800px;
+
+  /* 修正前: margin: 3rem auto; */
+  /* 修正後: 上下に 5rem (約80px) の余白を取る */
+  margin: 3rem auto;
+
+  padding: 0 2rem;
+  text-align: center;
+  color: #bbb;
+  line-height: 1.8;
+  box-sizing: border-box;
+}
+
+/* プロフィールなどのコンテンツ幅制限 */
+.profile-content,
+.page-container>p {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
   font-size: var(--font-size-lg);
   line-height: 1.8;
   color: var(--color-text-secondary);
 }
 
-/* Contact Form Styles */
+/* =========================================
+   3. Contact Form
+   ========================================= */
 .contact-form {
   max-width: 600px;
   margin-top: var(--spacing-lg);
@@ -68,14 +122,8 @@
   border: 1px solid var(--color-border);
   border-radius: 4px;
   color: var(--color-text-primary);
-  font-family: inherit;
   font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--color-accent);
+  box-sizing: border-box;
 }
 
 .submit-button {
@@ -86,29 +134,11 @@
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
-
-.submit-button:hover {
-  background-color: var(--color-accent-hover);
-}
-
-.submit-button:disabled {
-  background-color: var(--color-text-secondary);
-  cursor: not-allowed;
-}
-
-.error-message {
-  color: #ef4444;
-  margin-top: var(--spacing-md);
-}
-
 
 /* =========================================
-   WORKS / LIBRARY / GALLERY 共通グリッド
+   4. Grid Layout (HOME)
    ========================================= */
-
-/* 1. コンテンツ全体を中央に寄せる「箱」 */
 .grid-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -118,12 +148,14 @@
   gap: 2rem;
 }
 
-/* 2. ひとつひとつのカードのデザイン */
 .grid-card {
   background-color: #1a1a1a;
   border: 1px solid #333;
   border-radius: 8px;
   overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
   transition: transform 0.2s ease;
 }
 
@@ -132,14 +164,12 @@
   border-color: #4a7c59;
 }
 
-/* カード内の画像 */
 .grid-image {
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
 
-/* カード内の文字エリア */
 .grid-content {
   padding: 1.5rem;
   color: #e0e0e0;
@@ -147,12 +177,8 @@
 
 .grid-content h3 {
   margin-top: 0;
-  font-size: 1.2rem;
-  color: #fff;
-  margin-bottom: 0.5rem;
 }
 
-/* ツール名などのタグ */
 .tags {
   margin-bottom: 1rem;
 }
@@ -168,57 +194,72 @@
   margin-bottom: 5px;
 }
 
-
 /* =========================================
-   BLOG PAGE STYLES
+   5. Blog List Layout (BLOG / WORKS / GALLERY)
    ========================================= */
-
-/* 記事全体を囲む枠 */
 .blog-list-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 1rem;
 }
 
-/* ひとつの記事カード */
 .blog-card {
-  background-color: #e6e6ed;
-  border: 1px solid #d6d6dd;
-  border-radius: 8px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-/* 記事タイトル */
-.blog-title {
-  font-size: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  background-color: #fff;
   color: #333;
-  margin-bottom: 0.5rem;
-  border-left: 4px solid #4a7c59;
-  /* KOKAGEカラー */
-  padding-left: 10px;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  align-items: flex-start;
 }
 
-/* 日付とカテゴリ */
-.blog-meta {
-  font-size: 0.9rem;
-  color: #888;
-  margin-bottom: 1rem;
-}
-
-.blog-category {
-  background-color: #d6d6dd;
-  padding: 2px 8px;
+.blog-image-wrapper {
+  flex: 0 0 240px;
+  height: 160px;
   border-radius: 4px;
-  margin-left: 10px;
-  font-size: 0.8rem;
+  overflow: hidden;
+  background-color: #f0f0f0;
 }
 
-/* 記事本文 */
+.blog-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-text-area {
+  flex: 1;
+  min-width: 0;
+}
+
+/* カード内文字色 */
+.blog-title {
+  color: #333;
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem 0;
+}
+
 .blog-content {
-  line-height: 1.8;
   color: #444;
-  white-space: pre-wrap;
-  /* 改行を反映 */
+  line-height: 1.6;
+}
+
+.blog-meta {
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .blog-card {
+    flex-direction: column;
+  }
+
+  .blog-image-wrapper {
+    width: 100%;
+    height: 200px;
+  }
 }

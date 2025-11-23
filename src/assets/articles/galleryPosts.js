@@ -1,15 +1,17 @@
 // 画像をimportするか、publicフォルダのパスを指定
-export const galleryData = [
+export const galleryPosts = [
     {
         id: 1,
         location: "Tokyo",
         date: "2024.11",
-        src: "../images/20241102.jpg"
+        image: "/images/galleryImg/20241102.jpg",
+        featured: true,
     },
     {
         id: 2,
         location: "Chiba",
         date: "2024.12",
-        src: "../images/20241221.jpg"
+        image: "/images/galleryImg/20241221.jpg",
+        featured: true,
     },
 ];

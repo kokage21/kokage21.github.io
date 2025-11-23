@@ -1,6 +1,5 @@
 import React from 'react';
 import heroImage from '../assets/images/blog-hero.png';
-// 作成したデータを読み込みます
 import { blogPosts } from '../assets/articles/blogPosts.js';
 
 function Blog() {
@@ -10,20 +9,35 @@ function Blog() {
                 <img src={heroImage} alt="Blog Hero" className="hero-image" />
                 <h1 className="page-title">BLOG</h1>
             </div>
-            <p>日々気になったことを、書いていきます</p>
 
-            {/* ここから記事リストの自動生成エリア */}
+            <p className="page-description">
+                日々気になったことを、書いていきます
+            </p>
+
             <div className="blog-list-container">
                 {blogPosts.map((post) => (
-                    <article key={post.id} className="blog-card">
-                        <div className="blog-header">
-                            <h2 className="blog-title">{post.title}</h2>
-                            <div className="blog-meta">
-                                <span className="blog-date">{post.date}</span>
-                                <span className="blog-category">{post.category}</span>
+                    // ★修正：idを `blog-${post.id}` から `post-${post.id}` に変更
+                    // これで Home.jsx のリンク先 (/blog#post-1) と一致します
+                    <article key={post.id} id={`post-${post.id}`} className="blog-card">
+
+                        {/* ...以下、変更なし... */}
+                        {post.image && (
+                            <div className="blog-image-wrapper">
+                                <img src={post.image} alt={post.title} className="blog-card-image" />
                             </div>
+                        )}
+
+                        <div className="blog-text-area">
+                            <div className="blog-header">
+                                <h2 className="blog-title">{post.title}</h2>
+                                <div className="blog-meta">
+                                    <span className="blog-date">{post.date}</span>
+                                    <span className="blog-category">{post.category}</span>
+                                </div>
+                            </div>
+                            <p className="blog-content">{post.content}</p>
                         </div>
-                        <p className="blog-content">{post.content}</p>
+
                     </article>
                 ))}
             </div>
