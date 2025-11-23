@@ -4,6 +4,7 @@ export const worksPosts = [
     {
         id: 1,
         title: "ポートフォリオサイト作成",
+        date: "2025.11.22",
         category: "Web Development",
         tools: ["React", "Vite", "GitHub Pages"],
         image: null, //projectImg1, または画像のパス文字列
@@ -14,6 +15,7 @@ export const worksPosts = [
     {
         id: 2,
         title: "Googleアナリティクスを設定",
+        date: "2025.11.22",
         category: "Google Analysis 4",
         tools: ["Google Analytics 4"],
         image: null,

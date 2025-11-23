@@ -197,6 +197,7 @@ body {
 /* =========================================
    5. Blog List Layout (BLOG / WORKS / GALLERY)
    ========================================= */
+
 .blog-list-container {
   max-width: 800px;
   margin: 0 auto;
@@ -206,27 +207,60 @@ body {
 .blog-card {
   display: flex;
   gap: 1.5rem;
-  background-color: #fff;
-  color: #333;
+
+  /* ★修正：背景をダークグレーに変更 */
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  /* 枠線を薄く追加 */
+
+  /* ★修正：文字色を白系に変更 */
+  color: #e0e0e0;
+
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  /* 影を少し濃く */
   align-items: flex-start;
+  transition: transform 0.2s ease;
+  /* ホバー時の動き用 */
 }
 
+/* ホバー時に少し浮く演出（HOMEと合わせる） */
+.blog-card:hover {
+  transform: translateY(-3px);
+  border-color: #4a7c59;
+  /* KOKAGE Green */
+}
+
+/* 左側の写真エリア（高さ自動調整版） */
+/* 左側の写真エリア（幅を縮小版） */
 .blog-image-wrapper {
-  flex: 0 0 240px;
-  height: 160px;
+  float: left;
+
+  /* ★修正：幅を240pxから150px（約3/5）に変更 */
+  width: 150px;
+  /* 元は width: 240px; */
+
+  height: auto;
+  /* 高さはなりゆき（変更なし） */
+  margin-right: 1.5rem;
+  margin-bottom: 0.5rem;
   border-radius: 4px;
   overflow: hidden;
-  background-color: #f0f0f0;
+  background-color: transparent;
 }
 
 .blog-card-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+
+  /* ★修正：高さを自動にして比率を保つ */
+  height: auto;
+  /* 元は height: 100%; */
+
+  /* ★修正：object-fit: cover; を削除（またはコメントアウト） */
+  /* object-fit: cover; */
+
   display: block;
 }
 
@@ -235,22 +269,53 @@ body {
   min-width: 0;
 }
 
-/* カード内文字色 */
+/* カード内文字色の変更 */
 .blog-title {
-  color: #333;
+  color: #fff;
+  /* ★タイトルは真っ白に */
   font-size: 1.3rem;
   margin: 0 0 0.5rem 0;
 }
 
 .blog-content {
-  color: #444;
+  color: #ccc;
+  /* ★本文は薄いグレーに */
   line-height: 1.6;
 }
 
+/* src/styles/App.css */
+
+/* 日付やカテゴリのエリア */
 .blog-meta {
+  display: flex;
+  /* ★重要：横並びにして整列させる */
+  align-items: center;
+  /* 上下の中心を揃える */
+  gap: 1rem;
+  /* ★重要：日付とタグの間に隙間を空ける */
+  flex-wrap: wrap;
+  /* スマホでタグが多い時に折り返す */
+
   color: #888;
   font-size: 0.85rem;
   margin-bottom: 0.8rem;
+}
+
+/* カテゴリ/ツールのタグデザイン */
+.tag-mini {
+  display: inline-block;
+  background-color: #333;
+  /* ダークな背景 */
+  color: #ccc;
+  /* 明るい文字 */
+  padding: 2px 8px;
+  /* 内側の余白 */
+  border-radius: 4px;
+  /* 角丸 */
+  font-size: 0.75rem;
+  /* 文字は少し小さく */
+  border: 1px solid #444;
+  /* 薄い枠線 */
 }
 
 @media (max-width: 600px) {
@@ -261,5 +326,81 @@ body {
   .blog-image-wrapper {
     width: 100%;
     height: 200px;
+  }
+}
+
+/* =========================================
+   GALLERY PAGE (3列・中央揃えレイアウト)
+   ========================================= */
+
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.gallery-grid {
+  display: grid;
+  /* ★PCでは「3列」に固定して大きく見せる */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  /* 写真同士の隙間も少し広げてゆったりさせる */
+}
+
+.gallery-item {
+  text-align: center;
+  /* ★文字を中央揃え */
+  transition: transform 0.2s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+}
+
+/* 写真のデザイン（100%表示版） */
+.gallery-thumb {
+  width: 100%;
+  /* 横幅はグリッドに合わせて100% */
+  height: auto;
+  /* ★重要：高さは写真に合わせて自動調整 */
+
+  /* aspect-ratio: 1 / 1;  ←この行を削除（またはコメントアウト） */
+  /* object-fit: cover;    ←この行を削除（またはコメントアウト） */
+
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+
+  /* 背景色は不要になるので透明に */
+  background-color: transparent;
+
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-info {
+  font-size: 0.9rem;
+  /* 文字を少し大きく */
+  color: #bbb;
+  /* 少し明るくして読みやすく */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* ★フレックスボックスの中身を中央寄せ */
+  gap: 0.8rem;
+}
+
+/* --- レスポンシブ対応 --- */
+
+/* タブレットくらいの幅なら2列にする */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* スマホなら1列（大きく見せる） */
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
   }
 }

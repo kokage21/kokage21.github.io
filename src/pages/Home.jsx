@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // ★修正1：これを忘れると動かない！
+import { Link } from 'react-router-dom';
 import heroImage from '../assets/images/home-hero.png';
 
 import { blogPosts } from '../assets/articles/blogPosts.js';
 import { worksPosts } from '../assets/articles/worksPosts.js';
+import { libraryPosts } from '../assets/articles/libraryPosts.js'; // ★復活
 
 function Home() {
 
-    // Blogからの選抜
+    // Blog
     const featuredBlogs = blogPosts
         .filter(post => post.featured)
         .map(post => ({
@@ -16,11 +17,11 @@ function Home() {
             image: post.image,
             category: "BLOG / " + post.category,
             description: post.content.substring(0, 40) + "...",
-            link: `/blog#post-${post.id}`
+            link: `/blog#post-${post.id}`,
+            date: post.date
         }));
 
-    // Worksからの選抜
-    // ★修正2：変数を「worksData」から「worksPosts」に修正
+    // Works
     const featuredWorks = worksPosts
         .filter(work => work.featured)
         .map(work => ({
@@ -29,15 +30,30 @@ function Home() {
             image: work.image,
             category: "WORKS / " + work.category,
             description: work.description,
-            link: `/works#work-${work.id}` // ※Worksページ側のID設定も忘れずに！
+            link: `/works#work-${work.id}`,
+            date: work.date
         }));
 
-    // ★修正3：ドット3つ(...)をつけて、配列を「結合」する
-    // これがないと、[[blog], [work]] という二重構造になり、mapでエラーになります
+    // Library（★ここを復活させます！）
+    const featuredLibrary = libraryPosts
+        .filter(book => book.featured)
+        .map(book => ({
+            id: `book-${book.id}`,
+            title: book.title,
+            image: book.image,
+            category: "LIBRARY / " + book.category,
+            description: book.content.substring(0, 40) + "...",
+            link: `/library#book-${book.id}`,
+            date: book.date
+        }));
+
     const dashboardItems = [
         ...featuredBlogs,
-        ...featuredWorks
-    ];
+        ...featuredWorks,
+        ...featuredLibrary // ★ここも復活！
+    ]
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 6);
 
     return (
         <div className="page-container">
@@ -45,22 +61,25 @@ function Home() {
                 <img src={heroImage} alt="Home Hero" className="hero-image" />
                 <h1 className="page-title">HOME</h1>
             </div>
+
             <p className="page-description">
                 Welcome to KOKAGE Works. <br />
                 最新の活動記録です。
-                現在勉強しながらWEBサイト構築中。(ほとんど生成AI頼りですが汗)
             </p>
 
             <div className="grid-container">
-                {/* データがある場合のみ表示する安全策(?.) */}
-                {dashboardItems?.map((item) => (
+                {dashboardItems.map((item) => (
                     <Link key={item.id} to={item.link} className="grid-card">
 
-                        {/* 画像があれば表示 */}
                         {item.image && <img src={item.image} alt={item.title} className="grid-image" />}
 
                         <div className="grid-content">
                             <h3>{item.title}</h3>
+
+                            <div style={{ fontSize: '0.85rem', color: '#888', marginBottom: '0.5rem' }}>
+                                {item.date}
+                            </div>
+
                             <div className="tags">
                                 <span className="tag">{item.category}</span>
                             </div>

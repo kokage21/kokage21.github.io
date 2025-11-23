@@ -1,6 +1,5 @@
 import React from 'react';
 import heroImage from '../assets/images/gallery-hero.png';
-// ★データファイルを読み込む
 import { galleryPosts } from '../assets/articles/galleryPosts.js';
 
 function Gallery() {
@@ -10,45 +9,42 @@ function Gallery() {
                 <img src={heroImage} alt="Gallery Hero" className="hero-image" />
                 <h1 className="page-title">GALLERY</h1>
             </div>
+
             <p className="page-description">
                 Photo gallery & Artworks.
             </p>
 
-            {/* 統一されたコンテナクラス */}
-            <div className="blog-list-container">
-                {galleryPosts.map((art) => (
-                    <article key={art.id} id={`art-${art.id}`} className="blog-card">
+            {/* ★ここからGALLERY専用レイアウト */}
+            <div className="gallery-container">
+                <div className="gallery-grid">
+                    {galleryPosts.map((art) => (
+                        <div key={art.id} id={`art-${art.id}`} className="gallery-item">
 
-                        {/* 左：画像エリア */}
-                        {art.image && (
-                            <div className="blog-image-wrapper">
-                                <img src={art.image} alt={art.title} className="blog-card-image" />
-                            </div>
-                        )}
+                            {/* 写真エリア（正方形のタイル） */}
+                            {art.image && (
+                                <img
+                                    src={art.image}
+                                    alt={art.title}
+                                    className="gallery-thumb"
+                                />
+                            )}
 
-                        {/* 右：文章エリア */}
-                        <div className="blog-text-area">
-                            <div className="blog-header">
-                                <h2 className="blog-title">{art.title}</h2>
+                            {/* 情報エリア（日付と場所のみ） */}
+                            <div className="gallery-info">
+                                <span>{art.date}</span>
 
-                                <div className="blog-meta">
-                                    <span className="blog-date">{art.date}</span>
-                                    <span className="tag-mini">{art.category}</span>
-
-                                    {/* ★GALLERY特有：場所があれば表示 */}
-                                    {art.location && (
-                                        <span style={{ marginLeft: '10px', fontSize: '0.8rem', color: '#666' }}>
-                                            📍 {art.location}
-                                        </span>
-                                    )}
-                                </div>
+                                {/* 場所がある場合のみ表示 */}
+                                {art.location && (
+                                    <>
+                                        <span style={{ opacity: 0.5 }}>|</span> {/* 区切り線 */}
+                                        <span>📍 {art.location}</span>
+                                    </>
+                                )}
                             </div>
 
-                            <p className="blog-content">{art.content}</p>
                         </div>
-
-                    </article>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );
