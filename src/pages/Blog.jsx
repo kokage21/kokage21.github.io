@@ -18,6 +18,7 @@ function Blog() {
                 {blogPosts.map((post) => (
                     <article key={post.id} id={`post-${post.id}`} className="blog-card">
 
+                        {/* 画像があるときだけ表示する（nullなら消える） */}
                         {post.image && (
                             <div className="blog-image-wrapper">
                                 <img src={post.image} alt={post.title} className="blog-card-image" />
@@ -28,11 +29,8 @@ function Blog() {
                             <div className="blog-header">
                                 <h2 className="blog-title">{post.title}</h2>
 
-                                {/* ★ここを修正します！ */}
                                 <div className="blog-meta">
                                     <span className="blog-date">{post.date}</span>
-
-                                    {/* className="tag-mini" を追加してください */}
                                     <span className="tag-mini">{post.category}</span>
                                 </div>
                             </div>

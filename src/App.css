@@ -70,18 +70,32 @@ body {
 
 /* 説明文（About meなど）のスタイル */
 /* src/styles/App.css */
+/* src/styles/App.css */
+
+/* 修正前 */
+/*
 .page-container .page-description {
   max-width: 800px;
-
-  /* 修正前: margin: 3rem auto; */
-  /* 修正後: 上下に 5rem (約80px) の余白を取る */
-  margin: 3rem auto;
-
-  padding: 0 2rem;
-  text-align: center;
+  margin: 5rem auto;
+  padding: 0 2rem;    <-- ここがズレの原因1
+  text-align: center; <-- ここがズレの原因2
   color: #bbb;
   line-height: 1.8;
   box-sizing: border-box;
+  font-size: 1.1rem; 
+}
+*/
+
+/* ★修正後：こちらに書き換えてください */
+.page-container .page-description {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  text-align: left;
+  color: #bbb;
+  line-height: 1.8;
+  box-sizing: border-box;
+  font-size: 1.1rem;
 }
 
 /* プロフィールなどのコンテンツ幅制限 */
@@ -387,6 +401,44 @@ body {
   justify-content: center;
   /* ★フレックスボックスの中身を中央寄せ */
   gap: 0.8rem;
+}
+
+/* =========================================
+   Common Components (New! Badge)
+   ========================================= */
+
+/* カードの角に表示する「New!」バッジ */
+.new-badge {
+  position: absolute;
+  /* カードの定位置から自由に動かせるようにする */
+  top: 10px;
+  /* 上から10px */
+  left: 10px;
+  /* 左から10px */
+
+  background-color: #ff4d4d;
+  /* 明るい赤色 */
+  color: white;
+  /* 白文字 */
+
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  /* 角丸 */
+  z-index: 10;
+  /* 画像より手前に表示 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  /* 少し影をつける */
+}
+
+/* バッジを表示するために、親のカードに基準点を設定する */
+/* これがないと、バッジが画面の左上に行ってしまいます */
+.grid-card,
+.blog-card,
+.gallery-item {
+  position: relative;
+  /* ここが基準点になる */
 }
 
 /* --- レスポンシブ対応 --- */

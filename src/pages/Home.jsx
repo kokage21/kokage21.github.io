@@ -4,7 +4,8 @@ import heroImage from '../assets/images/home-hero.png';
 
 import { blogPosts } from '../assets/articles/blogPosts.js';
 import { worksPosts } from '../assets/articles/worksPosts.js';
-import { libraryPosts } from '../assets/articles/libraryPosts.js'; // ★復活
+import { libraryPosts } from '../assets/articles/libraryPosts.js';
+import { isNewPost } from '../utils/dateUtils.js';
 
 function Home() {
 
@@ -70,6 +71,11 @@ function Home() {
             <div className="grid-container">
                 {dashboardItems.map((item) => (
                     <Link key={item.id} to={item.link} className="grid-card">
+
+                        {/* カンマの後に数字を入れる（例：5日以内ならNew） */}
+                        {isNewPost(item.date, 5) && (
+                            <span className="new-badge">New!</span>
+                        )}
 
                         {item.image && <img src={item.image} alt={item.title} className="grid-image" />}
 
