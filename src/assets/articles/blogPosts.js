@@ -1,20 +1,11 @@
 export const blogPosts = [
     {
-        id: 3,
-        title: "Google Search Consoleを設定しました",
-        date: "2025.11.23",
-        category: "Google Search Console",
-        content: "Google Search Consoleを設定しました。",
-        image: null,
-        featured: true,
-    },
-    {
         id: 2,
-        title: "Google Analytics 4を設定しました",
-        date: "2025.11.22",
-        category: "Google Analytics 4",
-        content: "久しぶりにGoogle Analytics 4を設定しました。以前はレンタルサーバーでWEBを公開していましたが、ほとんど触っておらず放置状態でしたので、今回を機に再度トライしてみます",
-        image: null,
+        title: "Adobeフォトプランを解約しました",
+        date: "2025.11.25",
+        category: "Photo",
+        content: "最近Affinityが無料ということで話題になっていましたね。そのニュースに触発されて、もしAdobeのサブスクが高額だったら、自分も解約しようと思っていました。しかし、確認したときは、月額約1000円と、契約当初とほぼ変わらない金額を維持していたため、まぁあまり使ってないけど、1000円ならいいか...と一旦解約を思い直しました。しかし、11/24に価格改定のメールが来まして。。1180円から1780円に改定とのこと。。最近は、撮影と現像の機会が月イチくらいに現象していたため、思い切って解約しました！しばらくは無料ソフトで現像しようと思います。",
+        image: "/images/blogImg/id2.jpeg",
         featured: true,
     },
     {

@@ -72,8 +72,8 @@ function Home() {
                 {dashboardItems.map((item) => (
                     <Link key={item.id} to={item.link} className="grid-card">
 
-                        {/* カンマの後に数字を入れる（例：5日以内ならNew） */}
-                        {isNewPost(item.date, 5) && (
+                        {/* カンマの後に数字を入れる（例：3日以内ならNew） */}
+                        {isNewPost(item.date, 3) && (
                             <span className="new-badge">New!</span>
                         )}
 
