@@ -11,7 +11,7 @@ function Blog() {
             </div>
 
             <p className="page-description">
-                日々気になったことを、書いていきます
+                日々の出来事や気になったことを、書いていきます
             </p>
 
             <div className="blog-list-container">

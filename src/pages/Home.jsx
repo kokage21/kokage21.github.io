@@ -64,7 +64,7 @@ function Home() {
             </div>
 
             <p className="page-description">
-                Welcome to KOKAGE Works. <br />
+                Welcome to KOKAGE Works! <br />
                 最新の活動記録です。
             </p>
 
