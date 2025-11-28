@@ -1,13 +1,13 @@
 export const libraryPosts = [
     {
         id: 2,
-        title: "Pythonデータ分析入門",
-        author: "Wes McKinney",
-        category: "Essay",
-        date: "2025.11.22",
-        content: "Pandasの基礎固めを実施中。Pythonを使ったデータ分析初心者におすすめ",
-        image: null,
-        link: "https://github.com/kokage21/...",
+        title: "なぜ勉強すればするほど頭が悪くなるのか？",
+        author: "西岡 壱誠",
+        category: "book",
+        date: "2025.11.27",
+        content: "何も見ずに思い出す「アクティブリコール」の有効性について書かれた本。アクティブリコールによって記憶の定着率が増す。自分は乱読派で結構読んだことを忘れてしまうので、生活のなかにアクティブリコールの時間を取り入れていこうと思います🤣",
+        image: "/images/libraryImg/id2.png",
+        link: "https://amzn.asia/d/3e9Ia6K",
         featured: true,
     },
     {
